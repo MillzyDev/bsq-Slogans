@@ -4,7 +4,7 @@
   "info": {
     "name": "Slogans",
     "id": "Slogans",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "url": null,
     "additionalData": {}
   },
@@ -20,6 +20,21 @@
     },
     {
       "id": "codegen",
+      "versionRange": "*",
+      "additionalData": {}
+    },
+    {
+      "id": "questui",
+      "versionRange": "*",
+      "additionalData": {}
+    },
+    {
+      "id": "custom-types",
+      "versionRange": "*",
+      "additionalData": {}
+    },
+    {
+      "id": "config-utils",
       "versionRange": "*",
       "additionalData": {}
     }

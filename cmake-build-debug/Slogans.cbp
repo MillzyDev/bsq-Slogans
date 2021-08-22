@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Slogans"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="msvc8"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Slogans">
+				<Option output="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/cmake-build-debug/Slogans.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add option="-DVERSION=&quot;0.1.0&quot;"/>
+					<Add option="-DID=&quot;Slogans&quot;"/>
+					<Add option="-D__GNUC__"/>
+					<Add option="-D__aarch64__"/>
+					<Add directory="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/include"/>
+					<Add directory="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/extern"/>
+					<Add directory="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/shared"/>
+					<Add directory="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/extern/codegen/include"/>
+					<Add directory="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/extern/libil2cpp/il2cpp/libil2cpp"/>
+					<Add directory="C:/Users/USER/AppData/Roaming/Android/NDK"/>
+					<Add directory="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 Slogans"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Slogans/fast">
+				<Option output="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/cmake-build-debug/Slogans.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add option="-DVERSION=&quot;0.1.0&quot;"/>
+					<Add option="-DID=&quot;Slogans&quot;"/>
+					<Add option="-D__GNUC__"/>
+					<Add option="-D__aarch64__"/>
+					<Add directory="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/include"/>
+					<Add directory="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/extern"/>
+					<Add directory="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/shared"/>
+					<Add directory="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/extern/codegen/include"/>
+					<Add directory="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/extern/libil2cpp/il2cpp/libil2cpp"/>
+					<Add directory="C:/Users/USER/AppData/Roaming/Android/NDK"/>
+					<Add directory="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 Slogans/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\USER\Documents\GitHub\BeatSaber-Slogans\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/include/ExtraSettingsViewController.hpp">
+			<Option target="Slogans"/>
+		</Unit>
+		<Unit filename="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/src/ColoringViewController.cpp">
+			<Option target="Slogans"/>
+		</Unit>
+		<Unit filename="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/src/Config.cpp">
+			<Option target="Slogans"/>
+		</Unit>
+		<Unit filename="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/src/ExtraSettingsViewController.cpp">
+			<Option target="Slogans"/>
+		</Unit>
+		<Unit filename="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/src/PositioningViewController.cpp">
+			<Option target="Slogans"/>
+		</Unit>
+		<Unit filename="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/src/RainbowText.cpp">
+			<Option target="Slogans"/>
+		</Unit>
+		<Unit filename="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/src/SlogansFlowCoordinator.cpp">
+			<Option target="Slogans"/>
+		</Unit>
+		<Unit filename="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/src/TextMeshSettingsViewController.cpp">
+			<Option target="Slogans"/>
+		</Unit>
+		<Unit filename="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/src/main.cpp">
+			<Option target="Slogans"/>
+		</Unit>
+		<Unit filename="C:/Users/USER/Documents/GitHub/BeatSaber-Slogans/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
