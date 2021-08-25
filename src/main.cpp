@@ -62,6 +62,7 @@ TMPro::TextMeshProUGUI* slogan;
 MAKE_HOOK_MATCH(MenuEnvironmentManager_Start, &GlobalNamespace::MenuEnvironmentManager::Start,
     void, GlobalNamespace::MenuEnvironmentManager* self
 )   {
+    if (UnityEngine::GameObject::Find(il2cpp_utils::newcsstr("SloganCanvas")) return;
 
     canvas = BeatSaberUI::CreateCanvas();
     canvas->set_name(il2cpp_utils::newcsstr<il2cpp_utils::CreationType::Manual>("SloganCanvas"));
