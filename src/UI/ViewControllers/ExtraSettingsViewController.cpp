@@ -22,7 +22,10 @@ DEFINE_TYPE(Slogans::UI::ViewControllers, ExtraSettingsViewController);
 
 UnityEngine::UI::VerticalLayoutGroup* extLayout;
 
+UnityEngine::UI::Toggle* isBloomed;
 UnityEngine::UI::Toggle* isRainbow;
+UnityEngine::UI::Toggle* isInSong;
+
 
 void ViewControllers::ExtraSettingsViewController::DidActivate(bool firstActivation, bool addedToHeirarchy, bool screenSystemEnabling) {
     if (!firstActivation) return;
@@ -39,4 +42,6 @@ void ViewControllers::ExtraSettingsViewController::DidActivate(bool firstActivat
             slogan->set_color(getModConfig().TextColor.GetValue());
         }
     });
+
+    isInSong = AddConfigValueToggle(extLayout->get_transform(), getModConfig().IsInLevel);
 }

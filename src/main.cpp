@@ -10,6 +10,7 @@
 #include <cmath>
 
 #include "GlobalNamespace/MenuEnvironmentManager.hpp"
+#include "GlobalNamespace/CoreGameHUDController.hpp"
 
 #include "UnityEngine/UI/VerticalLayoutGroup.hpp"
 #include "UnityEngine/RectOffset.hpp"
@@ -61,6 +62,7 @@ TMPro::TextMeshProUGUI* slogan;
 MAKE_HOOK_MATCH(MenuEnvironmentManager_Start, &GlobalNamespace::MenuEnvironmentManager::Start,
     void, GlobalNamespace::MenuEnvironmentManager* self
 )   {
+
     canvas = BeatSaberUI::CreateCanvas();
     canvas->set_name(il2cpp_utils::newcsstr<il2cpp_utils::CreationType::Manual>("SloganCanvas"));
     UnityEngine::Object::DontDestroyOnLoad(canvas);
@@ -79,9 +81,19 @@ MAKE_HOOK_MATCH(MenuEnvironmentManager_Start, &GlobalNamespace::MenuEnvironmentM
 
     if (getModConfig().IsRainbow.GetValue()) slogan->get_gameObject()->AddComponent<Slogans::Components::RainbowText*>();
 
-
-
     MenuEnvironmentManager_Start(self);
+}
+
+MAKE_HOOK_MATCH(CoreGameHUDController_Start, &GlobalNamespace::CoreGameHUDController::Start,
+    void, GlobalNamespace::CoreGameHUDController* self
+) {
+    auto* sloganCanvas = UnityEngine::GameObject::Find(il2cpp_utils::newcsstr("SloganCanvas"));
+
+    if (!getModConfig().IsInLevel.GetValue() && sloganCanvas) {
+        UnityEngine::GameObject::Destroy(sloganCanvas);
+    }
+
+    CoreGameHUDController_Start(self);
 }
  
 // Called later on in the game loading - a good time to install function hooks
@@ -90,8 +102,9 @@ extern "C" void load() {
     QuestUI::Init();
 
     getLogger().info("Installing hooks...");
-    // Install our hooks (none defined yet)
+
     INSTALL_HOOK(getLogger(), MenuEnvironmentManager_Start);
+    INSTALL_HOOK(getLogger(), CoreGameHUDController_Start);
 
     getLogger().info("Installed all hooks!");
 
