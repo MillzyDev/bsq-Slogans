@@ -9,7 +9,8 @@
 
 #include <cmath>
 
-#include "GlobalNamespace/MenuEnvironmentManager.hpp"
+#include "GlobalNamespace/MainFlowCoordinator.hpp"
+#include "GlobalNamespace/StandardLevelDetailViewController.hpp"
 #include "GlobalNamespace/CoreGameHUDController.hpp"
 
 #include "UnityEngine/UI/VerticalLayoutGroup.hpp"
@@ -59,9 +60,7 @@ extern "C" void setup(ModInfo& info) {
 UnityEngine::GameObject* canvas;
 TMPro::TextMeshProUGUI* slogan;
 
-MAKE_HOOK_MATCH(MenuEnvironmentManager_Start, &GlobalNamespace::MenuEnvironmentManager::Start,
-    void, GlobalNamespace::MenuEnvironmentManager* self
-)   {
+void CreateSlogan() {
     if (UnityEngine::GameObject::Find(il2cpp_utils::newcsstr("SloganCanvas"))) return;
 
     canvas = BeatSaberUI::CreateCanvas();
@@ -73,7 +72,7 @@ MAKE_HOOK_MATCH(MenuEnvironmentManager_Start, &GlobalNamespace::MenuEnvironmentM
     transform->set_eulerAngles(getModConfig().TextRot.GetValue());
 
     UnityEngine::UI::VerticalLayoutGroup* layout = BeatSaberUI::CreateVerticalLayoutGroup(transform);
-    
+
     slogan = BeatSaberUI::CreateText(layout->get_transform(), getModConfig().TextContent.GetValue());
     slogan->get_gameObject()->set_name(il2cpp_utils::newcsstr<il2cpp_utils::CreationType::Temporary>("Slogan"));
 
@@ -81,8 +80,27 @@ MAKE_HOOK_MATCH(MenuEnvironmentManager_Start, &GlobalNamespace::MenuEnvironmentM
     slogan->set_color(getModConfig().TextColor.GetValue());
 
     if (getModConfig().IsRainbow.GetValue()) slogan->get_gameObject()->AddComponent<Slogans::Components::RainbowText*>();
+}
 
-    MenuEnvironmentManager_Start(self);
+MAKE_HOOK_MATCH(MainFlowCoordinator_DidActivate, &GlobalNamespace::MainFlowCoordinator::DidActivate,
+    void, GlobalNamespace::MainFlowCoordinator* self, bool firstActivation, bool addedToHeirarchy, bool screenSystemEnabling
+)   {
+
+    if (!UnityEngine::GameObject::Find(il2cpp_utils::newcsstr("SloganCanvas"))) {
+        CreateSlogan();
+    }
+
+    MainFlowCoordinator_DidActivate(self, firstActivation, addedToHeirarchy, screenSystemEnabling);
+}
+
+MAKE_HOOK_MATCH(StandardLevelDetailViewController_DidActivate, &GlobalNamespace::StandardLevelDetailViewController::DidActivate,
+    void, GlobalNamespace::StandardLevelDetailViewController* self, bool firstActivation, bool addedToHeirarchy, bool screenSystemEnabling
+) {
+    if (!UnityEngine::GameObject::Find(il2cpp_utils::newcsstr("SloganCanvas"))) {
+        CreateSlogan();
+    }
+
+    StandardLevelDetailViewController_DidActivate(self, firstActivation, addedToHeirarchy, screenSystemEnabling);
 }
 
 MAKE_HOOK_MATCH(CoreGameHUDController_Start, &GlobalNamespace::CoreGameHUDController::Start,
@@ -96,6 +114,7 @@ MAKE_HOOK_MATCH(CoreGameHUDController_Start, &GlobalNamespace::CoreGameHUDContro
 
     CoreGameHUDController_Start(self);
 }
+
  
 // Called later on in the game loading - a good time to install function hooks
 extern "C" void load() {
@@ -104,8 +123,10 @@ extern "C" void load() {
 
     getLogger().info("Installing hooks...");
 
-    INSTALL_HOOK(getLogger(), MenuEnvironmentManager_Start);
+    INSTALL_HOOK(getLogger(), MainFlowCoordinator_DidActivate);
+    INSTALL_HOOK(getLogger(), StandardLevelDetailViewController_DidActivate);
     INSTALL_HOOK(getLogger(), CoreGameHUDController_Start);
+
 
     getLogger().info("Installed all hooks!");
 
