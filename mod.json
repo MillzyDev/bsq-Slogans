@@ -1,0 +1,17 @@
+
+{
+    "_QPVersion": "0.1.1",
+    "name": "Slogans",
+    "id": "Slogans",
+    "author": "Millzy",
+    "version": "1.0.0",
+    "packageId": "com.beatgames.beatsaber",
+    "packageVersion": "1.17.1",
+    "description": "Allows you to place customisable text around the environment",
+    "modFiles": [
+        "libSlogans.so"
+    ],
+    "libraryFiles": [
+        "libbeatsaber-hook_2_3_2.so"
+    ]
+}
