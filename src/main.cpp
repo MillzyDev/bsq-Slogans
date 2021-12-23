@@ -11,7 +11,7 @@ using namespace Slogans;
 #include "Config/SlogansConfig.hpp"
 using namespace Slogans::Config;
 
-#include "UI/ViewControllers/SlogansViewController.hpp"
+#include "UI/ViewControllers/SloganSelectionViewController.hpp"
 using namespace Slogans::UI::ViewControllers;
 
 static ModInfo modInfo; // Stores the ID and version of our mod, and is sent to the modloader upon startup
@@ -43,15 +43,15 @@ extern "C" void setup(ModInfo& info) {
 extern "C" void load() {
     il2cpp_functions::Init();
 
-    auto* config = new SloganConfig();
-    config->id = "test_config";
-    config->Save();
+    (new SloganConfig())->Save();
+    (new SloganConfig())->Save();
+
 
     getLogger().info("Registering types...");
     Register::AutoRegister();
     getLogger().info("Installed types...");
 
-    QuestUI::Register::RegisterModSettingsViewController<SlogansViewController *>(modInfo);
+    QuestUI::Register::RegisterModSettingsViewController<SloganSelectionViewController *>(modInfo);
 
     getLogger().info("Installing Slogans hooks...");
     Hooks::InstallHooks(getLogger());
