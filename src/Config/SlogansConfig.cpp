@@ -1,15 +1,29 @@
 #include "Config/SlogansConfig.hpp"
+#include "Config/RandomString.hpp"
 using namespace Slogans::Config;
 
 #include "main.hpp"
 using namespace rapidjson;
 
 #include <utility>
+#include <filesystem>
+#include <algorithm>
 
-SloganConfig::SloganConfig() {}
+/**
+ * Used for creating new slogans ONLY!
+ */
+SloganConfig::SloganConfig() {
+    std::vector<std::string> ids = GetAllIds();
+    this->id = "";
+    // do-while, will always at least run once
+    // generating a random string and checking it doesnt exist with std::find, if there is a match: it loops again
+    do {
+        this->id = generateString(length);
+    } while(std::find(ids.begin(), ids.end(), this->id) != ids.end());
+}
 
 SloganConfig::SloganConfig(Color color, Dimension position, Dimension rotation, std::string text, float fontSize,
-    int shownInScenes, bool rainbow, bool pulse, bool bloom
+    int shownInScenes, bool rainbow, bool pulse, bool bloom, bool wobble
 ) {
     this->color = color;
     this->position = position;
@@ -20,6 +34,7 @@ SloganConfig::SloganConfig(Color color, Dimension position, Dimension rotation, 
     this->rainbow = rainbow;
     this->pulse = pulse;
     this->bloom = bloom;
+    this->wobble = wobble;
 }
 
 SloganConfig::SloganConfig(Document doc) {
@@ -32,6 +47,9 @@ SloganConfig::SloganConfig(Document doc) {
 
     if (doc.HasMember("rainbow") && doc["rainbow"].IsBool())
         this->rainbow = doc["rainbow"].GetBool();
+
+    if (doc.HasMember("wobble") && doc["wobble"].IsBool())
+        this->rainbow = doc["wobble"].GetBool();
 
     if (doc.HasMember("shownInScenes") && doc["shownInScenes"].IsInt())
         this->shownInScenes = doc[shownInScenes].GetInt();
@@ -124,6 +142,7 @@ void SloganConfig::Save() {
     doc.AddMember("bloom", this->bloom, all);
     doc.AddMember("pulse", this->pulse, all);
     doc.AddMember("rainbow", this->rainbow, all);
+    doc.AddMember("wobble", this->wobble, all);
     doc.AddMember("shownInScenes", this->shownInScenes, all);
     doc.AddMember("fontSize", this->fontSize, all);
     doc.AddMember("text", this->text, all);
@@ -165,4 +184,28 @@ void SloganConfig::Save() {
     std::string json = std::string(buffer.GetString());
     getLogger().info("%s", json.c_str());
     writefile(string_format("%s/%s.json", slogansPath.c_str(), this->id.c_str()), json);
+}
+
+std::vector<std::string> SloganConfig::GetAllIds() {
+    std::vector<std::string> ids = std::vector<std::string>();
+    for (const auto &entry : std::filesystem::directory_iterator(slogansPath)) {
+        std::string str = entry.path().filename().string();
+        str.erase(str.end() - 5, str.end());
+        ids.push_back(str);
+    }
+    return ids;
+}
+
+void SloganConfig::SaveAll(std::vector<SloganConfig *> configs) {
+    for (SloganConfig *config : configs) {
+        config->Save();
+    }
+}
+
+std::vector<SloganConfig *> SloganConfig::LoadAllConfigs() {
+    std::vector<SloganConfig *> configs = std::vector<SloganConfig *>();
+    for (std::string id : GetAllIds()) {
+        configs.push_back(Load(id));
+    }
+    return configs;
 }
