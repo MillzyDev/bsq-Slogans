@@ -4,14 +4,16 @@
   "info": {
     "name": "Slogans",
     "id": "Slogans",
-    "version": "1.0.0-Test1",
+    "version": "1.0.0",
     "url": null,
-    "additionalData": {}
+    "additionalData": {
+      "overrideSoName": "libSlogans.so"
+    }
   },
   "dependencies": [
     {
       "id": "beatsaber-hook",
-      "versionRange": "^2.3.2",
+      "versionRange": "*",
       "additionalData": {
         "extraFiles": [
           "src/inline-hook"
@@ -20,17 +22,32 @@
     },
     {
       "id": "codegen",
-      "versionRange": "^0.14.0",
+      "versionRange": "*",
       "additionalData": {}
     },
     {
       "id": "custom-types",
-      "versionRange": "^0.12.7",
+      "versionRange": "*",
       "additionalData": {}
     },
     {
       "id": "questui",
-      "versionRange": "^0.11.1",
+      "versionRange": "*",
+      "additionalData": {}
+    },
+    {
+      "id": "fmt",
+      "versionRange": "*",
+      "additionalData": {}
+    },
+    {
+      "id": "modloader",
+      "versionRange": "*",
+      "additionalData": {}
+    },
+    {
+      "id": "sombrero",
+      "versionRange": "*",
       "additionalData": {}
     }
   ],
