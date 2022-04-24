@@ -187,6 +187,14 @@ void SloganConfig::Save() {
 }
 
 std::vector<std::string> SloganConfig::GetAllIds() {
+    if (!direxists(slogansPath.c_str())) {
+        int makePath = mkpath(slogansPath.c_str());
+        if (makePath == -1) {
+            getLogger().info("Failed to make mod data dir");
+            return std::vector<std::string>();
+        }
+    }
+
     std::vector<std::string> ids = std::vector<std::string>();
     for (const auto &entry : std::filesystem::directory_iterator(slogansPath)) {
         std::string str = entry.path().filename().string();
