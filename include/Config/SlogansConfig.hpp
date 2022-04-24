@@ -11,6 +11,8 @@ using namespace UnityEngine;
 #include "UnityEngine/UI/HorizontalLayoutGroup.hpp"
 using namespace UnityEngine::UI;
 
+#include "fmt/fmt/include/fmt/core.h"
+
 #define SLOGAN_PATH_FORMAT "/sdcard/ModData/%s/Mods/Slogans/"
 
 namespace Slogans::Config {
@@ -60,6 +62,6 @@ namespace Slogans::Config {
 
         static std::vector<std::string> GetAllIds();
 
-        inline static std::string slogansPath = string_format(SLOGAN_PATH_FORMAT, Modloader::getApplicationId().c_str());
+        inline static std::string slogansPath = fmt::format(SLOGAN_PATH_FORMAT, Modloader::getApplicationId());
     };
 }
