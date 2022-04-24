@@ -31,7 +31,7 @@ Logger& getLogger() {
 
 // Called at the early stages of game loading
 extern "C" void setup(ModInfo& info) {
-    info.id = ID;
+    info.id = MOD_ID;
     info.version = VERSION;
     modInfo = info;
 	
@@ -43,8 +43,10 @@ extern "C" void setup(ModInfo& info) {
 extern "C" void load() {
     il2cpp_functions::Init();
 
-    (new SloganConfig())->Save();
-    (new SloganConfig())->Save();
+    if (SloganConfig::LoadAllConfigs().empty()) {
+        auto config = new SloganConfig();
+        config->Save();
+    }
 
 
     getLogger().info("Registering types...");
