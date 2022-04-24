@@ -24,5 +24,5 @@ DECLARE_CLASS_CODEGEN(Slogans::UI::ViewControllers, SloganSelectionViewControlle
     DECLARE_OVERRIDE_METHOD(void, DidDeactivate, GET_FIND_METHOD(&ViewController::DidDeactivate), bool removedFromHierarchy, bool screenSystemDisabling);
 
 public:
-    custom_types::Helpers::Coroutine LoadSlogans(Transform *parent);
+    static custom_types::Helpers::Coroutine LoadSlogans(Transform *parent);
 )
